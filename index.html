@@ -259,7 +259,6 @@
             margin: 0 auto;
         }
         
-        /* 新增提示文字样式 */
         .gallery-hint {
             font-size: 0.9rem;
             color: #666;
@@ -397,6 +396,7 @@
             margin-right: 5px;
         }
         
+        /* ========== 修改后的图片弹窗样式 ========== */
         .timeline-modal {
             display: none;
             position: fixed;
@@ -404,31 +404,39 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.9);
             z-index: 2000;
             align-items: center;
             justify-content: center;
         }
         
         .timeline-modal-content {
-            width: 80%;
+            width: 90%;
             max-width: 800px;
-            max-height: 80vh;
-            overflow: hidden;
+            max-height: 90vh;
+            overflow: auto;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
         
         .timeline-modal-img {
-            width: 100%;
+            max-width: 100%;
+            max-height: 80vh;
+            width: auto;
             height: auto;
             display: block;
             border-radius: 8px;
+            object-fit: contain;
+            animation: fadeIn 0.3s ease-out;
         }
         
         .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
             color: white;
             font-size: 2rem;
             cursor: pointer;
@@ -439,6 +447,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 10;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         .video-modal {
@@ -548,13 +562,17 @@
             position: relative;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .gallery-section-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.5s ease;
+            background-color: #f5f5f5;
         }
         
         .gallery-section-item:hover .gallery-section-img {
@@ -586,6 +604,7 @@
             transition: var(--transition);
             opacity: 0;
             transform: translateY(30px);
+            position: relative;
         }
         
         .testimonial-card.visible {
@@ -608,6 +627,13 @@
         .testimonial-author h4 {
             color: var(--primary-color);
             font-size: 1rem;
+        }
+        
+        .wish-date {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 5px;
+            text-align: right;
         }
         
         .wishes {
@@ -654,6 +680,50 @@
         .form-group textarea {
             height: 120px;
             resize: vertical;
+        }
+        
+        /* 管理员相关样式 */
+        .admin-controls {
+            background: rgba(93, 105, 179, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 15px;
+            text-align: center;
+            display: none;
+        }
+        
+        .testimonial-card.editable {
+            background: rgba(232, 141, 171, 0.1);
+            border: 1px dashed var(--accent-color);
+            padding-right: 60px;
+        }
+        
+        .edit-wish {
+            position: absolute;
+            top: 10px;
+            right: 40px;
+            color: var(--primary-color);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .delete-wish {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #ff6b6b;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            margin: 5px;
         }
         
         .footer {
@@ -887,6 +957,10 @@
             .timeline-media-btn {
                 width: 100%;
                 justify-content: center;
+            }
+            
+            .testimonial-card {
+                min-width: 250px;
             }
         }
         
@@ -1127,41 +1201,7 @@
         </div>
         
         <div class="testimonial-container" id="testimonial-container">
-            <div class="testimonial-card glass">
-                <div class="testimonial-content">
-                    "虽然只相处了一年，但(2)班让我感受到了家的温暖。记得刚分班时的陌生感，很快就被同学们的热情融化了。"
-                </div>
-                <div class="testimonial-author">
-                    <h4>- xxx</h4>
-                </div>
-            </div>
-            
-            <div class="testimonial-card glass">
-                <div class="testimonial-content">
-                    "Null"
-                </div>
-                <div class="testimonial-author">
-                    <h4>- 依埃斯</h4>
-                </div>
-            </div>
-            
-            <div class="testimonial-card glass">
-                <div class="testimonial-content">
-                    "感谢班主任和各科老师的辛勤付出，也感谢同学们的互帮互助。虽然只有一年，但这段情谊我会永远珍藏。"
-                </div>
-                <div class="testimonial-author">
-                    <h4>- 安比</h4>
-                </div>
-            </div>
-            
-            <div class="testimonial-card glass">
-                <div class="testimonial-content">
-                    "从陌生到熟悉，从同学到朋友，这一年虽然短暂却弥足珍贵。希望多年后我们还能记得彼此青春的模样。"
-                </div>
-                <div class="testimonial-author">
-                    <h4>- 派蒙</h4>
-                </div>
-            </div>
+            <!-- 留言将通过JavaScript动态加载 -->
         </div>
     </section>
     
@@ -1172,7 +1212,7 @@
             <p>为同学们送上你的祝福</p>
         </div>
         
-        <form class="wishes-form glass">
+        <form class="wishes-form glass" id="wish-form">
             <div class="form-group">
                 <label for="name">你的名字</label>
                 <input type="text" id="name" placeholder="请输入你的名字" required>
@@ -1185,6 +1225,14 @@
             
             <button type="submit" class="btn">提交祝福</button>
         </form>
+        
+        <!-- 管理员控制面板 -->
+        <div class="admin-controls glass" id="admin-controls">
+            <h3><i class="fas fa-lock"></i> 管理员控制面板</h3>
+            <button id="toggle-edit-mode" class="btn btn-small">
+                <i class="fas fa-edit"></i> 切换编辑模式
+            </button>
+        </div>
     </section>
     
     <!-- 页脚 -->
@@ -1234,297 +1282,413 @@
     </audio>
 
     <script>
-        // 导航栏滚动效果
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+        // ==================== 全局变量 ====================
+        let isAdmin = false;
+        let editMode = false;
+        let isMusicPlaying = false;
+
+        // ==================== DOM加载完成后执行 ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            initNavbar();
+            initTimeline();
+            initGallery();
+            initMusicPlayer();
+            initWishes();
+            loadTestimonials();
         });
-        
-        // 移动菜单切换
-        const menuToggle = document.getElementById('mobile-menu');
-        const navLinks = document.getElementById('nav-links');
-        
-        menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            menuToggle.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-        
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                if (navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                }
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+
+        // ==================== 导航栏功能 ====================
+        function initNavbar() {
+            // 滚动效果
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('scrolled', window.scrollY > 50);
+            });
+            
+            // 移动菜单切换
+            const menuToggle = document.getElementById('mobile-menu');
+            const navLinks = document.getElementById('nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                menuToggle.innerHTML = navLinks.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // 滚动到下方箭头
+            document.getElementById('scroll-down').addEventListener('click', function() {
+                window.scrollBy({
+                    top: window.innerHeight - 80,
                     behavior: 'smooth'
                 });
             });
-        });
-        
-        // 滚动到下方箭头
-        document.getElementById('scroll-down').addEventListener('click', function() {
-            window.scrollBy({
-                top: window.innerHeight - 80,
-                behavior: 'smooth'
-            });
-        });
-        
-        // 时光轴动画
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        
-        function checkTimeline() {
-            const triggerBottom = window.innerHeight / 5 * 4;
-            
-            timelineItems.forEach((item, index) => {
-                const itemTop = item.getBoundingClientRect().top;
-                
-                if (itemTop < triggerBottom) {
-                    item.style.transitionDelay = `${index * 0.15}s`;
-                    item.classList.add('visible');
-                }
-            });
         }
-        
-        // 时光轴图片展示功能
-        const timelineModal = document.getElementById('timeline-modal');
-        const modalImage = document.getElementById('modal-image');
-        
-        timelineItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                // 检查是否点击的是媒体按钮
-                if(!e.target.closest('.timeline-media-btn') && !e.target.closest('.timeline-video-hint')) {
-                    const imageUrl = this.getAttribute('data-image');
+
+        // ==================== 时光轴功能 ====================
+        function initTimeline() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            function checkTimeline() {
+                const triggerBottom = window.innerHeight / 5 * 4;
+                
+                timelineItems.forEach((item, index) => {
+                    const itemTop = item.getBoundingClientRect().top;
+                    
+                    if (itemTop < triggerBottom) {
+                        item.style.transitionDelay = `${index * 0.15}s`;
+                        item.classList.add('visible');
+                    }
+                });
+            }
+            
+            // 图片弹窗功能
+            const timelineModal = document.getElementById('timeline-modal');
+            const modalImage = document.getElementById('modal-image');
+            
+            timelineItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if(!e.target.closest('.timeline-media-btn') && !e.target.closest('.timeline-video-hint')) {
+                        const imageUrl = this.getAttribute('data-image');
+                        modalImage.src = imageUrl;
+                        timelineModal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            // 视频弹窗功能
+            function openVideoModal(videoUrl) {
+                const videoModal = document.getElementById('video-modal');
+                const videoFrame = document.getElementById('video-frame');
+                
+                videoFrame.src = videoUrl;
+                videoModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                
+                if(isMusicPlaying) {
+                    document.getElementById('bg-music').pause();
+                    document.getElementById('music-control').classList.add('paused');
+                    isMusicPlaying = false;
+                }
+            }
+            
+            // 多媒体打开函数
+            function openModal(type, element) {
+                const timelineItem = element.closest('.timeline-item');
+                
+                if(type === 'image') {
+                    const imageUrl = timelineItem.getAttribute('data-image');
                     modalImage.src = imageUrl;
                     timelineModal.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
+                } else if(type === 'video') {
+                    const videoUrl = timelineItem.getAttribute('data-video');
+                    openVideoModal(videoUrl);
+                }
+                
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // 初始化事件
+            document.querySelectorAll('[onclick^="openModal"]').forEach(btn => {
+                const type = btn.getAttribute('onclick').match(/'([^']+)'/)[1];
+                btn.onclick = function() { openModal(type, this); };
+            });
+            
+            document.getElementById('video-modal').addEventListener('click', function(e) {
+                if(e.target === this) {
+                    closeVideoModal();
                 }
             });
-        });
-        
-        function closeModal() {
-            timelineModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            
+            // 初始检查
+            checkTimeline();
+            window.addEventListener('scroll', checkTimeline);
+        }
+
+        // ==================== 相册功能 ====================
+        function initGallery() {
+            const galleryTabs = document.querySelectorAll('.gallery-tab');
+            const gallerySections = document.querySelectorAll('.gallery-section');
+            
+            galleryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 更新标签状态
+                    galleryTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 获取目标板块
+                    const target = this.getAttribute('data-tab');
+                    const currentSection = document.querySelector('.gallery-section.active');
+                    const nextSection = document.getElementById(target);
+                    
+                    // 设置动画方向
+                    const currentIndex = Array.from(gallerySections).indexOf(currentSection);
+                    const nextIndex = Array.from(gallerySections).indexOf(nextSection);
+                    const direction = nextIndex > currentIndex ? 'next' : 'prev';
+                    
+                    // 添加过渡类
+                    currentSection.classList.remove('active');
+                    currentSection.classList.add(direction);
+                    
+                    nextSection.classList.add('active');
+                    nextSection.classList.remove('prev', 'next');
+                    
+                    // 动画结束后移除类
+                    setTimeout(() => {
+                        currentSection.classList.remove('prev', 'next');
+                    }, 500);
+                });
+            });
+            
+            // 图片双击放大功能
+            document.querySelectorAll('.gallery-section-item').forEach(item => {
+                item.addEventListener('dblclick', function() {
+                    const img = this.querySelector('img');
+                    const modalImg = document.getElementById('modal-image');
+                    const timelineModal = document.getElementById('timeline-modal');
+                    
+                    // 获取图片自然尺寸
+                    const naturalWidth = img.naturalWidth;
+                    const naturalHeight = img.naturalHeight;
+                    
+                    // 重置样式
+                    modalImg.style.maxWidth = '';
+                    modalImg.style.maxHeight = '';
+                    
+                    // 设置弹窗尺寸基于图片比例
+                    const viewportRatio = window.innerHeight / window.innerWidth;
+                    const imageRatio = naturalHeight / naturalWidth;
+                    
+                    if(imageRatio > viewportRatio) {
+                        // 高图（竖图）
+                        modalImg.style.maxHeight = '90vh';
+                        modalImg.style.maxWidth = 'none';
+                    } else {
+                        // 宽图（横图）
+                        modalImg.style.maxWidth = '90vw';
+                        modalImg.style.maxHeight = 'none';
+                    }
+                    
+                    modalImg.src = img.src;
+                    timelineModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+        }
+
+        // ==================== 音乐播放器功能 ====================
+        function initMusicPlayer() {
+            const bgMusic = document.getElementById('bg-music');
+            const musicControl = document.getElementById('music-control');
+            
+            // 音乐控制按钮点击事件
+            musicControl.addEventListener('click', function() {
+                if(isMusicPlaying) {
+                    bgMusic.pause();
+                    musicControl.classList.add('paused');
+                    musicControl.innerHTML = '<i class="fas fa-play"></i><div class="music-wave"></div>';
+                } else {
+                    bgMusic.play().then(() => {
+                        musicControl.classList.remove('paused');
+                        musicControl.innerHTML = '<i class="fas fa-pause"></i><div class="music-wave"></div>';
+                        isMusicPlaying = true;
+                    }).catch(error => {
+                        console.log('播放失败:', error);
+                        alert('音乐播放失败，请点击音乐按钮重试');
+                    });
+                }
+                isMusicPlaying = !isMusicPlaying;
+            });
+            
+            // 页面可见性变化时处理音乐
+            document.addEventListener('visibilitychange', function() {
+                if(document.hidden && isMusicPlaying) {
+                    bgMusic.pause();
+                }
+            });
+        }
+
+        // ==================== 留言功能 ====================
+        function initWishes() {
+            const wishForm = document.getElementById('wish-form');
+            const adminControls = document.getElementById('admin-controls');
+            
+            // 表单提交处理
+            wishForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value.trim();
+                const message = document.getElementById('message').value.trim();
+                
+                // 管理员验证
+                if (name === "Admin" && message === "password") {
+                    isAdmin = true;
+                    adminControls.style.display = 'block';
+                    alert("管理员模式已激活！");
+                    this.reset();
+                    loadTestimonials(); // 重新加载留言以显示管理按钮
+                    return;
+                }
+                
+                // 普通留言
+                if (name && message) {
+                    addWish(name, message);
+                    this.reset();
+                } else {
+                    alert('请填写完整信息！');
+                }
+            });
+            
+            // 切换编辑模式
+            document.getElementById('toggle-edit-mode').addEventListener('click', function() {
+                editMode = !editMode;
+                document.querySelectorAll('.testimonial-card').forEach(card => {
+                    card.classList.toggle('editable', editMode);
+                });
+                this.innerHTML = editMode ? 
+                    '<i class="fas fa-times"></i> 退出编辑模式' : 
+                    '<i class="fas fa-edit"></i> 切换编辑模式';
+            });
+        }
+
+        // ==================== 留言数据管理 ====================
+        function loadTestimonials() {
+            const savedWishes = localStorage.getItem('class-wishes');
+            const initialWishes = [
+                {
+                    name: "xxx",
+                    message: "虽然只相处了一年，但(2)班让我感受到了家的温暖。记得刚分班时的陌生感，很快就被同学们的热情融化了。",
+                    timestamp: Date.now()
+                },
+                {
+                    name: "依埃斯",
+                    message: "Null",
+                    timestamp: Date.now()
+                },
+                {
+                    name: "安比",
+                    message: "感谢班主任和各科老师的辛勤付出，也感谢同学们的互帮互助。虽然只有一年，但这段情谊我会永远珍藏。",
+                    timestamp: Date.now()
+                },
+                {
+                    name: "派蒙",
+                    message: "从陌生到熟悉，从同学到朋友，这一年虽然短暂却弥足珍贵。希望多年后我们还能记得彼此青春的模样。",
+                    timestamp: Date.now()
+                }
+            ];
+            
+            if (!savedWishes) {
+                localStorage.setItem('class-wishes', JSON.stringify(initialWishes));
+            }
+            
+            const wishes = JSON.parse(savedWishes || JSON.stringify(initialWishes));
+            renderWishes(wishes);
         }
         
-        // 视频播放功能
-        function openVideoModal(videoUrl) {
-            const videoModal = document.getElementById('video-modal');
-            const videoFrame = document.getElementById('video-frame');
+        function renderWishes(wishes) {
+            const container = document.getElementById('testimonial-container');
+            container.innerHTML = '';
             
-            videoFrame.src = videoUrl;
-            videoModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
+            wishes.forEach((wish, index) => {
+                const card = document.createElement('div');
+                card.className = 'testimonial-card glass';
+                if (editMode) card.classList.add('editable');
+                
+                card.innerHTML = `
+                    ${isAdmin ? `
+                    <button class="edit-wish" data-index="${index}" title="编辑留言">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                    <button class="delete-wish" data-index="${index}" title="删除留言">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                    ` : ''}
+                    <div class="testimonial-content">${wish.message}</div>
+                    <div class="testimonial-author">
+                        <h4>- ${wish.name}</h4>
+                    </div>
+                    <div class="wish-date">${new Date(wish.timestamp).toLocaleString()}</div>
+                `;
+                container.appendChild(card);
+                
+                // 渐显动画
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, 100 * index);
+            });
             
-            // 如果音乐正在播放，先暂停
-            if(isMusicPlaying) {
-                bgMusic.pause();
-                musicControl.classList.add('paused');
-                musicControl.innerHTML = '<i class="fas fa-play"></i><div class="music-wave"></div>';
-                isMusicPlaying = false;
+            // 添加事件监听
+            document.querySelectorAll('.delete-wish').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    deleteWish(parseInt(this.getAttribute('data-index')));
+                });
+            });
+            
+            document.querySelectorAll('.edit-wish').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    editWish(parseInt(this.getAttribute('data-index')));
+                });
+            });
+        }
+        
+        function addWish(name, message) {
+            const wishes = JSON.parse(localStorage.getItem('class-wishes') || '[]');
+            wishes.push({
+                name,
+                message,
+                timestamp: Date.now()
+            });
+            localStorage.setItem('class-wishes', JSON.stringify(wishes));
+            renderWishes(wishes);
+        }
+        
+        function deleteWish(index) {
+            const wishes = JSON.parse(localStorage.getItem('class-wishes'));
+            if (confirm('确定要删除这条留言吗？')) {
+                wishes.splice(index, 1);
+                localStorage.setItem('class-wishes', JSON.stringify(wishes));
+                renderWishes(wishes);
             }
+        }
+        
+        function editWish(index) {
+            const wishes = JSON.parse(localStorage.getItem('class-wishes'));
+            const newMessage = prompt('编辑留言内容:', wishes[index].message);
+            if (newMessage !== null) {
+                wishes[index].message = newMessage.trim();
+                localStorage.setItem('class-wishes', JSON.stringify(wishes));
+                renderWishes(wishes);
+            }
+        }
+
+        // ==================== 通用功能 ====================
+        function closeModal() {
+            document.getElementById('timeline-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
         
         function closeVideoModal() {
             const videoModal = document.getElementById('video-modal');
-            const videoFrame = document.getElementById('video-frame');
-            
-            videoFrame.src = '';
+            document.getElementById('video-frame').src = '';
             videoModal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
-        
-        // 多媒体打开函数
-        function openModal(type, element) {
-            const timelineItem = element.closest('.timeline-item');
-            
-            if(type === 'image') {
-                const imageUrl = timelineItem.getAttribute('data-image');
-                modalImage.src = imageUrl;
-                timelineModal.style.display = 'flex';
-            } else if(type === 'video') {
-                const videoUrl = timelineItem.getAttribute('data-video');
-                openVideoModal(videoUrl);
-            }
-            
-            document.body.style.overflow = 'hidden';
-        }
-        
-        // 点击弹窗外部关闭
-        document.getElementById('video-modal').addEventListener('click', function(e) {
-            if(e.target === this) {
-                closeVideoModal();
-            }
-        });
-        
-        // 图片板块切换功能
-        const galleryTabs = document.querySelectorAll('.gallery-tab');
-        const gallerySections = document.querySelectorAll('.gallery-section');
-        
-        galleryTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                // 更新标签状态
-                galleryTabs.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                
-                // 获取目标板块
-                const target = this.getAttribute('data-tab');
-                const currentSection = document.querySelector('.gallery-section.active');
-                const nextSection = document.getElementById(target);
-                
-                // 设置动画方向
-                const currentIndex = Array.from(gallerySections).indexOf(currentSection);
-                const nextIndex = Array.from(gallerySections).indexOf(nextSection);
-                const direction = nextIndex > currentIndex ? 'next' : 'prev';
-                
-                // 添加过渡类
-                currentSection.classList.remove('active');
-                currentSection.classList.add(direction);
-                
-                nextSection.classList.add('active');
-                nextSection.classList.remove('prev', 'next');
-                
-                // 动画结束后移除类
-                setTimeout(() => {
-                    currentSection.classList.remove('prev', 'next');
-                }, 500);
-            });
-        });
-        
-        // 添加双击放大功能
-        document.querySelectorAll('.gallery-section-item').forEach(item => {
-            const img = item.querySelector('.gallery-section-img');
-            
-            // 保留原有的悬停效果
-            item.addEventListener('mouseenter', function() {
-                img.style.transform = 'scale(1.05)';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                img.style.transform = 'scale(1)';
-            });
-            
-            // 添加双击放大功能
-            item.addEventListener('dblclick', function() {
-                const imageUrl = img.src;
-                modalImage.src = imageUrl;
-                timelineModal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            });
-        });
-        
-        // 同学留言卡片动画
-        const testimonialCards = document.querySelectorAll('.testimonial-card');
-        
-        function checkTestimonials() {
-            const triggerBottom = window.innerHeight / 5 * 4;
-            
-            testimonialCards.forEach((card, index) => {
-                const cardTop = card.getBoundingClientRect().top;
-                
-                if (cardTop < triggerBottom) {
-                    card.style.transitionDelay = `${index * 0.1}s`;
-                    card.classList.add('visible');
-                }
-            });
-        }
-        
-        // 初始化显示前两个卡片
-        testimonialCards[0].classList.add('visible');
-        testimonialCards[1].classList.add('visible');
-        
-        // 留言表单提交功能
-        const wishForm = document.querySelector('.wishes-form');
-        const testimonialContainer = document.getElementById('testimonial-container');
-        
-        wishForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const message = document.getElementById('message').value;
-            
-            if(name && message) {
-                const newCard = document.createElement('div');
-                newCard.className = 'testimonial-card glass';
-                newCard.innerHTML = `
-                    <div class="testimonial-content">
-                        "${message}"
-                    </div>
-                    <div class="testimonial-author">
-                        <h4>- ${name}</h4>
-                    </div>
-                `;
-                
-                testimonialContainer.appendChild(newCard);
-                newCard.scrollIntoView({behavior: 'smooth', block: 'nearest'});
-                
-                setTimeout(() => {
-                    newCard.classList.add('visible');
-                }, 100);
-                
-                wishForm.reset();
-                alert(`感谢${name}的祝福！你的留言已添加到同学留言区。`);
-            } else {
-                alert('请填写完整信息！');
-            }
-        });
-        
-        // 音乐控制功能
-        const bgMusic = document.getElementById('bg-music');
-        const musicControl = document.getElementById('music-control');
-        let isMusicPlaying = false;
-        
-        // 音乐控制按钮点击事件
-        musicControl.addEventListener('click', function() {
-            if(isMusicPlaying) {
-                bgMusic.pause();
-                musicControl.classList.add('paused');
-                musicControl.innerHTML = '<i class="fas fa-play"></i><div class="music-wave"></div>';
-            } else {
-                bgMusic.play().then(() => {
-                    musicControl.classList.remove('paused');
-                    musicControl.innerHTML = '<i class="fas fa-pause"></i><div class="music-wave"></div>';
-                    isMusicPlaying = true;
-                }).catch(error => {
-                    console.log('播放失败:', error);
-                    alert('音乐播放失败，请点击音乐按钮重试');
-                });
-            }
-            isMusicPlaying = !isMusicPlaying;
-        });
-        
-        // 页面可见性变化时处理音乐
-        document.addEventListener('visibilitychange', function() {
-            if(document.hidden) {
-                // 页面隐藏时暂停音乐
-                if(isMusicPlaying) {
-                    bgMusic.pause();
-                }
-            } else {
-                // 页面显示时恢复音乐
-                if(!isMusicPlaying && !document.getElementById('video-modal').style.display === 'flex') {
-                    bgMusic.play();
-                }
-            }
-        });
-        
-        // 滚动事件监听
-        window.addEventListener('scroll', function() {
-            checkTimeline();
-            checkTestimonials();
-        });
-        
-        // 页面加载时检查一次
-        checkTimeline();
-        checkTestimonials();
     </script>
 </body>
 </html>
