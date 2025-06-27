@@ -396,7 +396,7 @@
             margin-right: 5px;
         }
         
-        /* ========== 修改后的图片弹窗样式 ========== */
+        /* ========== 图片弹窗样式 ========== */
         .timeline-modal {
             display: none;
             position: fixed;
@@ -565,14 +565,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            background-color: #f5f5f5;
         }
         
         .gallery-section-img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             transition: transform 0.5s ease;
-            background-color: #f5f5f5;
         }
         
         .gallery-section-item:hover .gallery-section-img {
@@ -1286,6 +1286,7 @@
         let isAdmin = false;
         let editMode = false;
         let isMusicPlaying = false;
+        let currentUser = localStorage.getItem('current-user') || '';
 
         // ==================== DOM加载完成后执行 ====================
         document.addEventListener('DOMContentLoaded', function() {
@@ -1464,27 +1465,12 @@
                     const modalImg = document.getElementById('modal-image');
                     const timelineModal = document.getElementById('timeline-modal');
                     
-                    // 获取图片自然尺寸
-                    const naturalWidth = img.naturalWidth;
-                    const naturalHeight = img.naturalHeight;
-                    
-                    // 重置样式
-                    modalImg.style.maxWidth = '';
-                    modalImg.style.maxHeight = '';
-                    
-                    // 设置弹窗尺寸基于图片比例
-                    const viewportRatio = window.innerHeight / window.innerWidth;
-                    const imageRatio = naturalHeight / naturalWidth;
-                    
-                    if(imageRatio > viewportRatio) {
-                        // 高图（竖图）
-                        modalImg.style.maxHeight = '90vh';
-                        modalImg.style.maxWidth = 'none';
-                    } else {
-                        // 宽图（横图）
-                        modalImg.style.maxWidth = '90vw';
-                        modalImg.style.maxHeight = 'none';
-                    }
+                    // 重置样式确保使用contain模式
+                    modalImg.style.objectFit = 'contain';
+                    modalImg.style.maxWidth = '90vw';
+                    modalImg.style.maxHeight = '90vh';
+                    modalImg.style.width = 'auto';
+                    modalImg.style.height = 'auto';
                     
                     modalImg.src = img.src;
                     timelineModal.style.display = 'flex';
@@ -1542,8 +1528,14 @@
                     adminControls.style.display = 'block';
                     alert("管理员模式已激活！");
                     this.reset();
-                    loadTestimonials(); // 重新加载留言以显示管理按钮
+                    loadTestimonials();
                     return;
+                }
+                
+                // 设置当前用户
+                if (!currentUser) {
+                    currentUser = name;
+                    localStorage.setItem('current-user', currentUser);
                 }
                 
                 // 普通留言
@@ -1606,12 +1598,13 @@
             container.innerHTML = '';
             
             wishes.forEach((wish, index) => {
+                const isCurrentUser = wish.name === currentUser;
                 const card = document.createElement('div');
                 card.className = 'testimonial-card glass';
-                if (editMode) card.classList.add('editable');
+                if (editMode || isCurrentUser) card.classList.add('editable');
                 
                 card.innerHTML = `
-                    ${isAdmin ? `
+                    ${(isAdmin || isCurrentUser) ? `
                     <button class="edit-wish" data-index="${index}" title="编辑留言">
                         <i class="fas fa-pencil-alt"></i>
                     </button>
