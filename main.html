@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初三(2)班毕业纪念册</title>
+    
+    <!-- 预加载关键CSS -->
+    <link rel="preload" href="src/styles/variables.css" as="style">
+    <link rel="preload" href="src/styles/base/reset.css" as="style">
+    <link rel="preload" href="src/styles/base/typography.css" as="style">
+    
+    <!-- 基础样式 (最高优先级) -->
+    <link rel="stylesheet" href="src/styles/variables.css">
+    <link rel="stylesheet" href="src/styles/base/reset.css">
+    <link rel="stylesheet" href="src/styles/base/typography.css">
+    <link rel="stylesheet" href="src/styles/base/global.css">
+    
+    <!-- 组件样式 (中等优先级) -->
+    <link rel="stylesheet" href="src/styles/components/navbar.css">
+    <link rel="stylesheet" href="src/styles/components/hero.css">
+    <link rel="stylesheet" href="src/styles/components/timeline.css">
+    <link rel="stylesheet" href="src/styles/components/gallery.css">
+    <link rel="stylesheet" href="src/styles/components/testimonials.css">
+    <link rel="stylesheet" href="src/styles/components/wishes.css">
+    
+    <!-- 工具样式 (低优先级) -->
+    <link rel="stylesheet" href="src/styles/utils/animations.css">
+    <link rel="stylesheet" href="src/styles/utils/glass.css">
+    <link rel="stylesheet" href="src/styles/utils/modal.css">
+    
+    <!-- 字体图标 (异步加载) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- 预加载关键JS -->
+    <link rel="preload" href="src/scripts/main.js" as="script">
+    <link rel="preload" href="src/utils/dom.js" as="script">
+</head>
+<body>
+    <!-- 初始加载占位 -->
+    <div id="app">
+        <div class="loading-placeholder">
+            <div class="spinner"></div>
+            <p>加载中...</p>
+        </div>
+    </div>
+
+    <!-- 模态框结构 -->
+    <div class="modal" id="image-modal">
+        <div class="modal-content glass">
+            <span class="close-modal">&times;</span>
+            <img id="modal-image" class="modal-img" src="" alt="">
+        </div>
+    </div>
+
+    <div class="modal" id="video-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="video-container">
+                <iframe id="video-frame" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 音乐播放器 -->
+    <div class="music-control paused" id="music-control" aria-label="背景音乐控制">
+        <i class="fas fa-play"></i>
+    </div>
+    
+    <!-- 音频元素 (预加载但不自动播放) -->
+    <audio id="bg-music" preload="metadata">
+        <source src="src/assets/music/memories.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 核心JS加载 (按依赖顺序) -->
+    <script src="src/utils/dom.js" defer></script>
+    <script src="src/utils/storage.js" defer></script>
+    <script src="src/utils/animation.js" defer></script>
+    
+    <!-- 组件JS -->
+    <script src="src/components/Navbar.js" defer></script>
+    <script src="src/components/Hero.js" defer></script>
+    <script src="src/components/Timeline.js" defer></script>
+    <script src="src/components/Gallery.js" defer></script>
+    <script src="src/components/Testimonials.js" defer></script>
+    <script src="src/components/WishesForm.js" defer></script>
+    
+    <!-- 插件JS (依赖基础工具) -->
+    <script src="src/scripts/plugins/music.js" defer></script>
+    <script src="src/scripts/plugins/scroll.js" defer></script>
+    
+    <!-- 主应用JS (最后加载) -->
+    <script src="src/scripts/App.js" defer></script>
+    <script src="src/scripts/main.js" defer></script>
+
+    <!-- 加载失败处理 -->
+    <noscript>
+        <style>
+            .loading-placeholder { display: none !important; }
+            #app:after {
+                content: "请启用JavaScript以获得完整体验";
+                display: block;
+                padding: 2rem;
+                text-align: center;
+                color: red;
+            }
+        </style>
+    </noscript>
+</body>
+</html>
