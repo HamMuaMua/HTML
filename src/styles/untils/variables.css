@@ -1,0 +1,18 @@
+:root {
+  --primary-color: #5d69b3;
+  --secondary-color: #8a7fca;
+  --accent-color: #e88dab;
+  --dark-color: #333;
+  --light-color: #f8f9fa;
+  --glass-color: rgba(255, 255, 255, 0.2);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* 暗色模式支持 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dark-color: #f8f9fa;
+    --light-color: #333;
+    --glass-color: rgba(0, 0, 0, 0.2);
+  }
+}
