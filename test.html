@@ -1026,10 +1026,10 @@
                     <h3>校运动会</h3>
                     <p>在秋季运动会上，我们班获得了团体总分第二名的好成绩，展现了团结拼搏的精神。</p>
                     <div class="timeline-media-options">
-                        <span class="timeline-media-btn" onclick="openModal('image', this)">
+                        <span class="timeline-media-btn" data-type="image">
                             <i class="fas fa-image"></i> 查看照片
                         </span>
-                        <span class="timeline-media-btn" onclick="openModal('video', this)">
+                        <span class="timeline-media-btn" data-type="video">
                             <i class="fas fa-video"></i> 观看视频
                         </span>
                     </div>
@@ -1042,10 +1042,10 @@
                     <h3>班级辩论会</h3>
                     <p>班级组织的主题辩论会，同学们唇枪舌战，展现了出色的思辨能力和口才。</p>
                     <div class="timeline-media-options">
-                        <span class="timeline-media-btn" onclick="openModal('image', this)">
+                        <span class="timeline-media-btn" data-type="image">
                             <i class="fas fa-image"></i> 查看照片
                         </span>
-                        <span class="timeline-media-btn" onclick="openModal('video', this)">
+                        <span class="timeline-media-btn" data-type="video">
                             <i class="fas fa-video"></i> 观看视频
                         </span>
                     </div>
@@ -1058,10 +1058,10 @@
                     <h3>元旦文艺汇演</h3>
                     <p>我们班表演的《青春舞曲》获得了最佳创意奖，同学们利用课余时间刻苦排练。</p>
                     <div class="timeline-media-options">
-                        <span class="timeline-media-btn" onclick="openModal('image', this)">
+                        <span class="timeline-media-btn" data-type="image">
                             <i class="fas fa-image"></i> 查看照片
                         </span>
-                        <span class="timeline-media-btn" onclick="openModal('video', this)">
+                        <span class="timeline-media-btn" data-type="video">
                             <i class="fas fa-video"></i> 观看视频
                         </span>
                     </div>
@@ -1074,7 +1074,7 @@
                     <h3>春游活动</h3>
                     <p>全班同学一起前往郊外春游，在大自然中放松心情，增进友谊。</p>
                     <div class="timeline-media-options">
-                        <span class="timeline-media-btn" onclick="openModal('image', this)">
+                        <span class="timeline-media-btn" data-type="image">
                             <i class="fas fa-image"></i> 查看照片
                         </span>
                     </div>
@@ -1087,7 +1087,7 @@
                     <h3>毕业照拍摄</h3>
                     <p>穿上整齐的校服，在校园各处留下青春的身影，定格这一年的美好回忆。</p>
                     <div class="timeline-media-options">
-                        <span class="timeline-media-btn" onclick="openModal('image', this)">
+                        <span class="timeline-media-btn" data-type="image">
                             <i class="fas fa-image"></i> 查看照片
                         </span>
                     </div>
@@ -1186,38 +1186,7 @@
         </div>
         
         <div class="testimonial-container" id="testimonial-container">
-            <!-- 硬编码的初始四条留言 -->
-            <div class="testimonial-card glass visible" data-permanent="true" data-id="1">
-                <div class="testimonial-content">虽然只相处了一年，但(2)班让我感受到了家的温暖。记得刚分班时的陌生感，很快就被同学们的热情融化了。</div>
-                <div class="testimonial-author">
-                    <h4>- xxx</h4>
-                </div>
-                <div class="wish-date">2023-06-15 10:00:00</div>
-            </div>
-            
-            <div class="testimonial-card glass visible" data-permanent="true" data-id="2">
-                <div class="testimonial-content">Null</div>
-                <div class="testimonial-author">
-                    <h4>- 依埃斯</h4>
-                </div>
-                <div class="wish-date">2023-06-15 10:05:00</div>
-            </div>
-            
-            <div class="testimonial-card glass visible" data-permanent="true" data-id="3">
-                <div class="testimonial-content">感谢班主任和各科老师的辛勤付出，也感谢同学们的互帮互助。虽然只有一年，但这段情谊我会永远珍藏。</div>
-                <div class="testimonial-author">
-                    <h4>- 安比</h4>
-                </div>
-                <div class="wish-date">2023-06-15 10:10:00</div>
-            </div>
-            
-            <div class="testimonial-card glass visible" data-permanent="true" data-id="4">
-                <div class="testimonial-content">从陌生到熟悉，从同学到朋友，这一年虽然短暂却弥足珍贵。希望多年后我们还能记得彼此青春的模样。</div>
-                <div class="testimonial-author">
-                    <h4>- 派蒙</h4>
-                </div>
-                <div class="wish-date">2023-06-15 10:15:00</div>
-            </div>
+            <!-- 留言将通过JavaScript动态加载 -->
         </div>
     </section>
     
@@ -1241,14 +1210,6 @@
             
             <button type="submit" class="btn">提交祝福</button>
         </form>
-        
-        <!-- 管理员控制面板 -->
-        <div class="admin-controls glass" id="admin-controls">
-            <h3><i class="fas fa-lock"></i> 管理员控制面板</h3>
-            <button id="toggle-edit-mode" class="btn btn-small">
-                <i class="fas fa-edit"></i> 切换编辑模式
-            </button>
-        </div>
     </section>
     
     <!-- 页脚 -->
@@ -1257,9 +1218,9 @@
         <p>一年同窗 · 一生情谊 · 2022届毕业纪念</p>
         
         <div class="social-links">
-            <a href="mailto:designer@example.com" title="作者邮箱"><i class="fas fa-envelope"></i></a>
-            <a href="tel:13800138000" title="作者电话"><i class="fas fa-phone-alt"></i></a>
-            <a href="https://www.example.com" title="作者网站"><i class="fas fa-globe"></i></a>
+            <a href="#" title="作者邮箱"><i class="fas fa-envelope"></i></a>
+            <a href="#" title="作者电话"><i class="fas fa-phone-alt"></i></a>
+            <a href="#" title="作者网站"><i class="fas fa-globe"></i></a>
         </div>
         
         <div class="footer-bottom">
@@ -1270,14 +1231,14 @@
     <!-- 弹窗和音乐控制 -->
     <div class="timeline-modal" id="timeline-modal">
         <div class="timeline-modal-content glass">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <span class="close-modal">&times;</span>
             <img id="modal-image" class="timeline-modal-img" src="" alt="时光轴图片">
         </div>
     </div>
     
     <div class="video-modal" id="video-modal">
         <div class="video-modal-content">
-            <span class="close-video" onclick="closeVideoModal()">&times;</span>
+            <span class="close-video">&times;</span>
             <div class="video-container">
                 <iframe id="video-frame" src="" frameborder="0" allowfullscreen></iframe>
             </div>
@@ -1307,38 +1268,6 @@
         let isAdmin = false;
         let editMode = false;
         let isMusicPlaying = false;
-        
-        // 初始四条留言数据
-        const INITIAL_WISHES = [
-            {
-                id: 1,
-                name: "xxx",
-                message: "虽然只相处了一年，但(2)班让我感受到了家的温暖。记得刚分班时的陌生感，很快就被同学们的热情融化了。",
-                timestamp: new Date("2023-06-15 10:00:00").getTime(),
-                permanent: true
-            },
-            {
-                id: 2,
-                name: "依埃斯",
-                message: "Null",
-                timestamp: new Date("2023-06-15 10:05:00").getTime(),
-                permanent: true
-            },
-            {
-                id: 3,
-                name: "安比",
-                message: "感谢班主任和各科老师的辛勤付出，也感谢同学们的互帮互助。虽然只有一年，但这段情谊我会永远珍藏。",
-                timestamp: new Date("2023-06-15 10:10:00").getTime(),
-                permanent: true
-            },
-            {
-                id: 4,
-                name: "派蒙",
-                message: "从陌生到熟悉，从同学到朋友，这一年虽然短暂却弥足珍贵。希望多年后我们还能记得彼此青春的模样。",
-                timestamp: new Date("2023-06-15 10:15:00").getTime(),
-                permanent: true
-            }
-        ];
 
         // ==================== DOM加载完成后执行 ====================
         document.addEventListener('DOMContentLoaded', function() {
@@ -1348,6 +1277,11 @@
             initMusicPlayer();
             initWishes();
             loadTestimonials();
+            
+            // 解决浏览器自动播放策略
+            document.addEventListener('click', function() {
+                document.getElementById('bg-music').play().catch(e => {});
+            }, { once: true });
         });
 
         // ==================== 导航栏功能 ====================
@@ -1409,56 +1343,53 @@
             
             const timelineModal = document.getElementById('timeline-modal');
             const modalImage = document.getElementById('modal-image');
+            const videoModal = document.getElementById('video-modal');
             
-            timelineItems.forEach(item => {
-                item.addEventListener('click', function(e) {
-                    if(!e.target.closest('.timeline-media-btn') && !e.target.closest('.timeline-video-hint')) {
-                        const imageUrl = this.getAttribute('data-image');
-                        modalImage.src = imageUrl;
-                        timelineModal.style.display = 'flex';
-                        document.body.style.overflow = 'hidden';
-                    }
+            // 绑定图片查看按钮
+            document.querySelectorAll('.timeline-media-btn[data-type="image"]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const imageUrl = this.closest('.timeline-item').getAttribute('data-image');
+                    modalImage.src = imageUrl;
+                    timelineModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
                 });
             });
             
-            function openVideoModal(videoUrl) {
-                const videoModal = document.getElementById('video-modal');
-                const videoFrame = document.getElementById('video-frame');
-                
-                videoFrame.src = videoUrl;
-                videoModal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-                
-                if(isMusicPlaying) {
-                    document.getElementById('bg-music').pause();
-                    document.getElementById('music-control').classList.add('paused');
-                    isMusicPlaying = false;
-                }
-            }
-            
-            function openModal(type, element) {
-                const timelineItem = element.closest('.timeline-item');
-                
-                if(type === 'image') {
-                    const imageUrl = timelineItem.getAttribute('data-image');
-                    modalImage.src = imageUrl;
-                    timelineModal.style.display = 'flex';
-                } else if(type === 'video') {
-                    const videoUrl = timelineItem.getAttribute('data-video');
-                    openVideoModal(videoUrl);
-                }
-                
-                document.body.style.overflow = 'hidden';
-            }
-            
-            document.querySelectorAll('[onclick^="openModal"]').forEach(btn => {
-                const type = btn.getAttribute('onclick').match(/'([^']+)'/)[1];
-                btn.onclick = function() { openModal(type, this); };
+            // 绑定视频查看按钮
+            document.querySelectorAll('.timeline-media-btn[data-type="video"]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const videoUrl = this.closest('.timeline-item').getAttribute('data-video');
+                    document.getElementById('video-frame').src = videoUrl;
+                    videoModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
             });
             
-            document.getElementById('video-modal').addEventListener('click', function(e) {
-                if(e.target === this) {
-                    closeVideoModal();
+            // 关闭按钮
+            document.querySelector('.close-modal').addEventListener('click', function() {
+                timelineModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            document.querySelector('.close-video').addEventListener('click', function() {
+                document.getElementById('video-frame').src = '';
+                videoModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // 点击模态框外部关闭
+            timelineModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            videoModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    document.getElementById('video-frame').src = '';
+                    this.style.display = 'none';
+                    document.body.style.overflow = 'auto';
                 }
             });
             
@@ -1496,6 +1427,7 @@
                 });
             });
             
+            // 双击放大图片
             document.querySelectorAll('.gallery-section-item').forEach(item => {
                 item.addEventListener('dblclick', function() {
                     const img = this.querySelector('img');
@@ -1520,6 +1452,10 @@
             const bgMusic = document.getElementById('bg-music');
             const musicControl = document.getElementById('music-control');
             
+            // 确保音乐文件路径正确
+            bgMusic.src = "music/memories.mp3";
+            bgMusic.load();
+            
             musicControl.addEventListener('click', function() {
                 if(isMusicPlaying) {
                     bgMusic.pause();
@@ -1532,7 +1468,7 @@
                         isMusicPlaying = true;
                     }).catch(error => {
                         console.log('播放失败:', error);
-                        alert('音乐播放失败，请点击音乐按钮重试');
+                        alert('音乐播放失败，请点击页面任意位置后重试');
                     });
                 }
                 isMusicPlaying = !isMusicPlaying;
@@ -1571,27 +1507,12 @@
                     alert('请填写完整信息！');
                 }
             });
-            
-            document.getElementById('toggle-edit-mode').addEventListener('click', function() {
-                editMode = !editMode;
-                document.querySelectorAll('.testimonial-card').forEach(card => {
-                    if(!card.dataset.permanent) {
-                        card.classList.toggle('editable', editMode);
-                    }
-                });
-                this.innerHTML = editMode ? 
-                    '<i class="fas fa-times"></i> 退出编辑模式' : 
-                    '<i class="fas fa-edit"></i> 切换编辑模式';
-            });
         }
 
         // ==================== 留言数据管理 ====================
         async function loadTestimonials() {
             try {
-                // 首先渲染初始留言
-                renderWishes(INITIAL_WISHES);
-                
-                // 从Supabase加载其他留言
+                // 从Supabase加载留言
                 const { data: savedWishes, error } = await supabase
                     .from('message')
                     .select('*')
@@ -1602,20 +1523,9 @@
                     return;
                 }
                 
-                // 转换数据格式
-                const formattedWishes = savedWishes.map(wish => ({
-                    id: wish.id,
-                    name: wish.name,
-                    message: wish.message,
-                    timestamp: new Date(wish.created_at).getTime()
-                }));
-                
-                // 添加其他留言
-                if (formattedWishes.length > 0) {
-                    renderWishes([...INITIAL_WISHES, ...formattedWishes]);
-                }
+                renderWishes(savedWishes);
             } catch (error) {
-                console.error('初始化留言失败:', error);
+                console.error('加载留言失败:', error);
             }
         }
 
@@ -1644,153 +1554,27 @@
             }
         }
 
-        async function deleteWish(id) {
-            if(document.querySelector(`[data-id="${id}"][data-permanent]`)) {
-                alert('初始留言不可删除！');
-                return;
-            }
-            
-            if (!confirm('确定要删除这条留言吗？')) return;
-            
-            try {
-                // 从Supabase删除
-                const { error } = await supabase
-                    .from('message')
-                    .delete()
-                    .eq('id', id);
-                
-                if (error) {
-                    throw error;
-                }
-                
-                // 重新加载留言
-                await loadTestimonials();
-            } catch (error) {
-                console.error('删除留言失败:', error);
-                alert('删除留言失败，请稍后再试');
-            }
-        }
-
-        async function editWish(id) {
-            const card = document.querySelector(`[data-id="${id}"]`);
-            if(!card) return;
-            
-            if(card.dataset.permanent) {
-                alert('初始留言不可编辑！');
-                return;
-            }
-            
-            const currentName = document.getElementById('name').value.trim();
-            const cardName = card.querySelector('.testimonial-author h4').textContent.replace('- ', '').trim();
-            
-            if (!isAdmin && currentName !== cardName) {
-                alert('您只能编辑自己的留言！');
-                return;
-            }
-            
-            const newName = prompt('编辑名字:', cardName);
-            if (newName === null) return;
-            
-            const newMessage = prompt('编辑留言内容:', card.querySelector('.testimonial-content').textContent.trim());
-            if (newMessage === null) return;
-            
-            try {
-                // 更新到Supabase
-                const { error } = await supabase
-                    .from('message')
-                    .update({
-                        name: newName.trim(),
-                        message: newMessage.trim(),
-                        updated_at: new Date().toISOString()
-                    })
-                    .eq('id', id);
-                
-                if (error) {
-                    throw error;
-                }
-                
-                // 重新加载留言
-                await loadTestimonials();
-            } catch (error) {
-                console.error('更新留言失败:', error);
-                alert('更新留言失败，请稍后再试');
-            }
-        }
-
         function renderWishes(wishes) {
             const container = document.getElementById('testimonial-container');
+            container.innerHTML = '';
             
-            // 保留初始留言
-            const permanentCards = Array.from(document.querySelectorAll('[data-permanent]'));
+            if (!wishes || wishes.length === 0) {
+                container.innerHTML = '<p class="glass" style="padding: 20px; text-align: center;">暂无留言，快来留下你的祝福吧！</p>';
+                return;
+            }
             
-            // 清除非永久留言
-            document.querySelectorAll('.testimonial-card:not([data-permanent])').forEach(el => el.remove());
-            
-            // 添加新留言（跳过初始留言）
             wishes.forEach(wish => {
-                if (!wish.permanent || !document.querySelector(`[data-id="${wish.id}"]`)) {
-                    const card = document.createElement('div');
-                    card.className = 'testimonial-card glass';
-                    card.dataset.id = wish.id;
-                    
-                    const currentName = document.getElementById('name').value.trim();
-                    const isEditable = isAdmin || (wish.name === currentName);
-                    
-                    if (editMode && isEditable) {
-                        card.classList.add('editable');
-                    }
-                    
-                    card.innerHTML = `
-                        ${(isAdmin || isEditable) ? `
-                        <button class="edit-wish" data-id="${wish.id}" title="编辑留言">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                        <button class="delete-wish" data-id="${wish.id}" title="删除留言">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        ` : ''}
-                        <div class="testimonial-content">${wish.message}</div>
-                        <div class="testimonial-author">
-                            <h4>- ${wish.name}</h4>
-                        </div>
-                        <div class="wish-date">${new Date(wish.timestamp).toLocaleString()}</div>
-                    `;
-                    
-                    if (!wish.permanent) {
-                        container.appendChild(card);
-                    }
-                    
-                    setTimeout(() => {
-                        card.classList.add('visible');
-                    }, 100);
-                }
+                const card = document.createElement('div');
+                card.className = 'testimonial-card glass visible';
+                card.innerHTML = `
+                    <div class="testimonial-content">${wish.message}</div>
+                    <div class="testimonial-author">
+                        <h4>- ${wish.name}</h4>
+                    </div>
+                    <div class="wish-date">${new Date(wish.created_at).toLocaleString()}</div>
+                `;
+                container.appendChild(card);
             });
-            
-            // 添加事件监听
-            document.querySelectorAll('.delete-wish').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    deleteWish(parseInt(this.getAttribute('data-id')));
-                });
-            });
-            
-            document.querySelectorAll('.edit-wish').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    editWish(parseInt(this.getAttribute('data-id')));
-                });
-            });
-        }
-
-        // ==================== 通用功能 ====================
-        function closeModal() {
-            document.getElementById('timeline-modal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-        
-        function closeVideoModal() {
-            const videoModal = document.getElementById('video-modal');
-            document.getElementById('video-frame').src = '';
-            videoModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
         }
     </script>
 </body>
