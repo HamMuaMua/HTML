@@ -2,7 +2,8 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="HandheldFriendly" content="true">
     <title>青春纪念册 | 初三(2)班毕业留念</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -14,12 +15,18 @@
             --light-color: #f8f9fa;
             --glass-color: rgba(255, 255, 255, 0.2);
             --transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --mobile-font-size: 14px;
+            --desktop-font-size: 16px;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        html {
+            font-size: var(--desktop-font-size);
         }
         
         body {
@@ -31,6 +38,16 @@
             overflow-x: hidden;
         }
         
+        /* 设备特定类 */
+        .mobile-only {
+            display: none !important;
+        }
+        
+        .desktop-only {
+            display: block !important;
+        }
+        
+        /* 玻璃效果 */
         .glass {
             background: var(--glass-color);
             backdrop-filter: blur(10px);
@@ -40,6 +57,7 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
         
+        /* 导航栏 */
         .navbar {
             position: fixed;
             top: 0;
@@ -126,6 +144,7 @@
             font-size: 1.5rem;
         }
         
+        /* 英雄区域 */
         .hero {
             height: 100vh;
             display: flex;
@@ -181,6 +200,7 @@
             color: rgba(255, 255, 255, 0.9);
         }
         
+        /* 按钮样式 */
         .btn {
             display: inline-block;
             padding: 10px 25px;
@@ -223,6 +243,7 @@
             cursor: pointer;
         }
         
+        /* 时光轴部分 */
         .timeline {
             padding: 80px 10%;
             position: relative;
@@ -384,6 +405,7 @@
             margin-right: 5px;
         }
         
+        /* 弹窗样式 */
         .timeline-modal {
             display: none;
             position: fixed;
@@ -437,11 +459,7 @@
             z-index: 10;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
+        /* 视频弹窗 */
         .video-modal {
             display: none;
             position: fixed;
@@ -487,6 +505,7 @@
             cursor: pointer;
         }
         
+        /* 相册部分 */
         .gallery-tabs {
             display: flex;
             justify-content: center;
@@ -566,6 +585,7 @@
             transform: scale(1.05);
         }
         
+        /* 留言部分 */
         .testimonials {
             padding: 80px 10%;
             background-color: #f0f2f5;
@@ -604,6 +624,12 @@
             font-size: 0.95rem;
         }
         
+        .note {
+            font-size: 0.65rem;
+            color: #333;
+            font-style: normal;
+        }
+        
         .testimonial-author {
             margin-top: 15px;
             text-align: right;
@@ -621,6 +647,7 @@
             text-align: right;
         }
         
+        /* 祝福表单 */
         .wishes {
             padding: 80px 10%;
             background-color: white;
@@ -667,6 +694,7 @@
             resize: vertical;
         }
         
+        /* 管理员控制 */
         .admin-controls {
             background: rgba(93, 105, 179, 0.1);
             max-width: 600px;
@@ -710,6 +738,7 @@
             margin: 5px;
         }
         
+        /* 页脚 */
         .footer {
             background-color: var(--dark-color);
             color: white;
@@ -768,29 +797,7 @@
             font-size: 0.85rem;
         }
         
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
-            }
-            40% {
-                transform: translateY(-15px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-7px) translateX(-50%);
-            }
-        }
-        
+        /* 音乐控制 */
         .music-control {
             position: fixed;
             bottom: 30px;
@@ -838,6 +845,30 @@
             opacity: 0;
         }
         
+        /* 动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-7px) translateX(-50%);
+            }
+        }
+        
         @keyframes musicWave {
             0% {
                 transform: scale(1);
@@ -849,6 +880,12 @@
             }
         }
         
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* 移动端响应式设计 */
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 2.5rem;
@@ -880,6 +917,18 @@
         }
         
         @media (max-width: 768px) {
+            html {
+                font-size: var(--mobile-font-size);
+            }
+            
+            .mobile-only {
+                display: block !important;
+            }
+            
+            .desktop-only {
+                display: none !important;
+            }
+            
             .menu-toggle {
                 display: block;
                 color: var(--dark-color);
@@ -895,7 +944,7 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 70px);
-                background-color: white;
+                background-color: rgba(93, 105, 179, 0.98);
                 flex-direction: column;
                 align-items: center;
                 padding-top: 40px;
@@ -910,8 +959,15 @@
                 margin: 15px 0;
             }
             
+            .nav-links a {
+                color: white !important;
+                font-size: 1.2rem;
+                padding: 12px 0;
+            }
+            
             .hero h1 {
                 font-size: 2.2rem;
+                line-height: 1.3;
             }
             
             .hero p {
@@ -923,7 +979,7 @@
             }
             
             .gallery-section {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                grid-template-columns: repeat(2, 1fr);
             }
             
             .music-control {
@@ -941,10 +997,23 @@
             .timeline-media-btn {
                 width: 100%;
                 justify-content: center;
+                padding: 10px;
             }
             
             .testimonial-card {
-                min-width: 250px;
+                min-width: 85vw;
+            }
+            
+            /* 增大触摸目标 */
+            .btn, .gallery-tab {
+                min-height: 44px;
+                padding: 12px 25px;
+            }
+            
+            .form-group input, 
+            .form-group textarea {
+                font-size: 16px;
+                padding: 15px;
             }
         }
         
@@ -966,10 +1035,58 @@
             .gallery-section {
                 grid-template-columns: 1fr;
             }
+            
+            .footer {
+                padding: 40px 5%;
+            }
+            
+            .social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* 超大屏幕优化 */
+        @media (min-width: 1600px) {
+            .hero-content {
+                max-width: 1000px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- 设备检测脚本 -->
+    <script>
+        // 设备检测函数
+        function detectDevice() {
+            const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            document.body.classList.toggle('mobile-device', isMobile);
+            document.body.classList.toggle('desktop-device', !isMobile);
+            
+            // 存储设备类型
+            sessionStorage.setItem('deviceType', isMobile ? 'mobile' : 'desktop');
+            
+            // 窗口大小变化检测
+            function checkLayout() {
+                if(window.innerWidth <= 768) {
+                    document.body.classList.add('mobile-layout');
+                } else {
+                    document.body.classList.remove('mobile-layout');
+                }
+            }
+            
+            // 初始检测
+            checkLayout();
+            
+            // 窗口大小变化时重新检测
+            window.addEventListener('resize', checkLayout);
+        }
+        
+        // 初始化检测
+        document.addEventListener('DOMContentLoaded', detectDevice);
+    </script>
+
     <!-- 导航栏 -->
     <nav class="navbar">
         <a href="#" class="logo">
@@ -993,7 +1110,8 @@
     <section class="hero" id="home">
         <div class="hero-content glass">
             <h1>一年同窗 · 一生情谊</h1>
-            <p>初三(2)班毕业纪念 · 2024-2025学年</p>
+            <p class="desktop-only">初三(2)班毕业纪念 · 2024-2025学年 · 最佳浏览体验建议使用电脑</p>
+            <p class="mobile-only">用手指滑动查看我们的青春记忆</p>
             <div class="hero-buttons">
                 <a href="#gallery" class="btn">查看相册</a>
                 <a href="#wishes" class="btn btn-outline">写下祝福</a>
@@ -1020,48 +1138,48 @@
                 </div>
             </div>
             
-            <div class="timeline-item" data-image="images/timeline/02.jpg" data-video="video/sports.mp4">
+            <div class="timeline-item" data-image="images/timeline/02.jpg" data-video="video/performance.mp4">
                 <div class="timeline-content glass">
-                    <div class="timeline-date">2024年10月</div>
-                    <h3>校运动会</h3>
-                    <p>在秋季运动会上，我们班获得了团体总分第二名的好成绩，展现了团结拼搏的精神。</p>
+                    <div class="timeline-date">2024年10月底</div>
+                    <h3>校艺术节</h3>
+                    <p>在艺术节时，2班同学们牺牲休息时间参加节目排练，其编排舞蹈《青春舞曲（Batter up)》夺得了舞蹈类一等奖</p>
                     <div class="timeline-media-options">
-                        <span class="timeline-media-btn" data-type="image">
+                        <span class="timeline-media-btn" onclick="openModal('image', this)">
                             <i class="fas fa-image"></i> 查看照片
                         </span>
-                        <span class="timeline-media-btn" data-type="video">
+                        <span class="timeline-media-btn" onclick="openModal('video', this)">
                             <i class="fas fa-video"></i> 观看视频
                         </span>
                     </div>
                 </div>
             </div>
             
-            <div class="timeline-item" data-image="images/timeline/03.jpg" data-video="video/debate.mp4">
+            <div class="timeline-item" data-image="images/timeline/03.jpg" data-video="video/sports.mp4">
                 <div class="timeline-content glass">
                     <div class="timeline-date">2024年11月</div>
+                    <h3>校运动会</h3>
+                    <p>校运动会上，2班运动员们如离弦之箭，在跑道上奋力冲刺；跳高选手腾空跃起，划出优美的弧线；投掷区的铅球带着破空之声飞向远方。看台上欢呼雷动，各班啦啦队挥动着彩旗呐喊助威，展现了蓬勃的青春活力与永不言弃的体育精神。</p>
+                    <div class="timeline-media-options">
+                        <span class="timeline-media-btn" onclick="openModal('image', this)">
+                            <i class="fas fa-image"></i> 查看照片
+                        </span>
+                        <span class="timeline-media-btn" onclick="openModal('video', this)">
+                            <i class="fas fa-video"></i> 观看视频
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item" data-image="images/timeline/04.jpg" data-video="video/debate.mp4">
+                <div class="timeline-content glass">
+                    <div class="timeline-date">2024年12月1号</div>
                     <h3>班级辩论会</h3>
                     <p>班级组织的主题辩论会，同学们唇枪舌战，展现了出色的思辨能力和口才。</p>
                     <div class="timeline-media-options">
-                        <span class="timeline-media-btn" data-type="image">
+                        <span class="timeline-media-btn" onclick="openModal('image', this)">
                             <i class="fas fa-image"></i> 查看照片
                         </span>
-                        <span class="timeline-media-btn" data-type="video">
-                            <i class="fas fa-video"></i> 观看视频
-                        </span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="timeline-item" data-image="images/timeline/04.jpg" data-video="video/performance.mp4">
-                <div class="timeline-content glass">
-                    <div class="timeline-date">2024年12月</div>
-                    <h3>元旦文艺汇演</h3>
-                    <p>我们班表演的《青春舞曲》获得了最佳创意奖，同学们利用课余时间刻苦排练。</p>
-                    <div class="timeline-media-options">
-                        <span class="timeline-media-btn" data-type="image">
-                            <i class="fas fa-image"></i> 查看照片
-                        </span>
-                        <span class="timeline-media-btn" data-type="video">
+                        <span class="timeline-media-btn" onclick="openModal('video', this)">
                             <i class="fas fa-video"></i> 观看视频
                         </span>
                     </div>
@@ -1070,11 +1188,11 @@
             
             <div class="timeline-item" data-image="images/timeline/05.jpg">
                 <div class="timeline-content glass">
-                    <div class="timeline-date">2025年4月</div>
-                    <h3>春游活动</h3>
-                    <p>全班同学一起前往郊外春游，在大自然中放松心情，增进友谊。</p>
+                    <div class="timeline-date">2025年5月19号至20号</div>
+                    <h3>体育中考</h3>
+                    <p>体育中考的赛场上，考生们个个摩拳擦掌，蓄势待发。跑道上他们步伐矫健，如风般掠过终点。监考老师认真记录，场边同学加油鼓劲，每个人都拼尽全力，用汗水诠释着拼搏的意义，展现了青少年昂扬向上的精神风貌。</p>
                     <div class="timeline-media-options">
-                        <span class="timeline-media-btn" data-type="image">
+                        <span class="timeline-media-btn" onclick="openModal('image', this)">
                             <i class="fas fa-image"></i> 查看照片
                         </span>
                     </div>
@@ -1083,11 +1201,11 @@
             
             <div class="timeline-item" data-image="images/timeline/06.jpg">
                 <div class="timeline-content glass">
-                    <div class="timeline-date">2025年6月</div>
+                    <div class="timeline-date">2025年6月16号</div>
                     <h3>毕业照拍摄</h3>
                     <p>穿上整齐的校服，在校园各处留下青春的身影，定格这一年的美好回忆。</p>
                     <div class="timeline-media-options">
-                        <span class="timeline-media-btn" data-type="image">
+                        <span class="timeline-media-btn" onclick="openModal('image', this)">
                             <i class="fas fa-image"></i> 查看照片
                         </span>
                     </div>
@@ -1186,7 +1304,40 @@
         </div>
         
         <div class="testimonial-container" id="testimonial-container">
-            <!-- 留言将通过JavaScript动态加载 -->
+            <!-- 硬编码的初始四条留言 -->
+            <div class="testimonial-card glass visible" data-permanent="true" data-id="1">
+                <div class="testimonial-content">虽然只相处了一年，但(2)班让我感受到了家的温暖。记得刚分班时的陌生感，很快就被同学们的热情融化了。</div>
+                <div class="testimonial-author">
+                    <h4>- 胡珈豪</h4>
+                </div>
+                <div class="wish-date">2023-06-15 09:23:15</div>
+            </div>
+            
+            <div class="testimonial-card glass visible" data-permanent="true" data-id="2">
+                <div class="testimonial-content">青春是握不住的流沙。是贯穿人生最别样的年华。那时梦想的种子被埋下，我说少年是一朵含苞待放的花。盛开于仲夏，而我们一相逢于仲夏。蝉鸣虽悠扬，却有短促，青春这场电影。离别时如鲠在喉。只能用眼泪掩盖说出再见时的沙哑。</div>
+                <div class="testimonial-author">
+                    <h4>- 龚俊方</h4>
+                </div>
+                <div class="wish-date">2025-06-16 11:35:52</div>
+            </div>
+            
+            <div class="testimonial-card glass visible" data-permanent="true" data-id="3">
+                <div class="testimonial-content">虽然这一年的同学生涯并不长，但是却十分跌宕起伏，嗯，应该是跌宕起伏……初三发生的一些事曾经让我觉得这个重组的班有些压抑，但是还好有你们，我的朋友们，由于某个人一直催<span class="note">（我不是，我没有😡）</span>，所以话就写到这里，最后祝我的朋友们学业有成，事事顺利，最后最后再祝我们JD集团永远不散!!!</div>
+                <div class="testimonial-author">
+                    <h4>- 尹文昊</h4>
+                </div>
+                <div class="wish-date">2025-06-17 20:41:09</div>
+            </div>
+            
+            <div class="testimonial-card glass visible" data-permanent="true" data-id="4">
+                <div class="testimonial-content">我亲爱滴牢湿和同学萌：</div>
+                <div class="testimonial-content">岁月这把杀猪刀还是太超标了，无情的斩向了我们，斩向了我们的三年光阴，独属于我们的青春校园剧，杀青了！😭😭😭
+  如有来生！呸呸呸，如果可以希望以后都是你萌😭😭😭窝会想你萌嘟，最后祝大家天天进步🤣🤪，早生贵子😭😭<span class="note">（？）</span></div>
+                <div class="testimonial-author">
+                    <h4>- 陈鑫林</h4>
+                </div>
+                <div class="wish-date">2025-06-15 11:45:14</div>
+            </div>
         </div>
     </section>
     
@@ -1210,6 +1361,14 @@
             
             <button type="submit" class="btn">提交祝福</button>
         </form>
+        
+        <!-- 管理员控制面板 -->
+        <div class="admin-controls glass" id="admin-controls">
+            <h3><i class="fas fa-lock"></i> 管理员控制面板</h3>
+            <button id="toggle-edit-mode" class="btn btn-small">
+                <i class="fas fa-edit"></i> 切换编辑模式
+            </button>
+        </div>
     </section>
     
     <!-- 页脚 -->
@@ -1218,9 +1377,9 @@
         <p>一年同窗 · 一生情谊 · 2022届毕业纪念</p>
         
         <div class="social-links">
-            <a href="#" title="作者邮箱"><i class="fas fa-envelope"></i></a>
-            <a href="#" title="作者电话"><i class="fas fa-phone-alt"></i></a>
-            <a href="#" title="作者网站"><i class="fas fa-globe"></i></a>
+            <a href="mailto:designer@example.com" title="作者邮箱"><i class="fas fa-envelope"></i></a>
+            <a href="tel:13800138000" title="作者电话"><i class="fas fa-phone-alt"></i></a>
+            <a href="https://www.example.com" title="作者网站"><i class="fas fa-globe"></i></a>
         </div>
         
         <div class="footer-bottom">
@@ -1231,14 +1390,14 @@
     <!-- 弹窗和音乐控制 -->
     <div class="timeline-modal" id="timeline-modal">
         <div class="timeline-modal-content glass">
-            <span class="close-modal">&times;</span>
+            <span class="close-modal" onclick="closeModal()">&times;</span>
             <img id="modal-image" class="timeline-modal-img" src="" alt="时光轴图片">
         </div>
     </div>
     
     <div class="video-modal" id="video-modal">
         <div class="video-modal-content">
-            <span class="close-video">&times;</span>
+            <span class="close-video" onclick="closeVideoModal()">&times;</span>
             <div class="video-container">
                 <iframe id="video-frame" src="" frameborder="0" allowfullscreen></iframe>
             </div>
@@ -1255,19 +1414,44 @@
         您的浏览器不支持音频元素。
     </audio>
 
-    <!-- 添加Supabase客户端库 -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
+    <!-- 主JavaScript -->
     <script>
-        // ==================== Supabase 初始化 ====================
-        const supabaseUrl = 'https://fdveryzbkzplhjhszlsr.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZkdmVyeXpia3pwbGhqaHN6bHNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTExOTY1NTksImV4cCI6MjA2Njc3MjU1OX0.A2H8eB4U9Ca-QgTkcTQQeL636abLNUOaDCiQxVqDLGs';
-        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
-
         // ==================== 全局变量 ====================
         let isAdmin = false;
         let editMode = false;
         let isMusicPlaying = false;
+        
+        // 初始四条留言数据
+        const INITIAL_WISHES = [
+            {
+                id: 1,
+                name: "xxx",
+                message: "虽然只相处了一年，但(2)班让我感受到了家的温暖。记得刚分班时的陌生感，很快就被同学们的热情融化了。",
+                timestamp: new Date("2023-06-15 10:00:00").getTime(),
+                permanent: true
+            },
+            {
+                id: 2,
+                name: "依埃斯",
+                message: "Null",
+                timestamp: new Date("2023-06-15 10:05:00").getTime(),
+                permanent: true
+            },
+            {
+                id: 3,
+                name: "安比",
+                message: "感谢班主任和各科老师的辛勤付出，也感谢同学们的互帮互助。虽然只有一年，但这段情谊我会永远珍藏。",
+                timestamp: new Date("2023-06-15 10:10:00").getTime(),
+                permanent: true
+            },
+            {
+                id: 4,
+                name: "派蒙",
+                message: "从陌生到熟悉，从同学到朋友，这一年虽然短暂却弥足珍贵。希望多年后我们还能记得彼此青春的模样。",
+                timestamp: new Date("2023-06-15 10:15:00").getTime(),
+                permanent: true
+            }
+        ];
 
         // ==================== DOM加载完成后执行 ====================
         document.addEventListener('DOMContentLoaded', function() {
@@ -1278,10 +1462,10 @@
             initWishes();
             loadTestimonials();
             
-            // 解决浏览器自动播放策略
-            document.addEventListener('click', function() {
-                document.getElementById('bg-music').play().catch(e => {});
-            }, { once: true });
+            // 移动端特定优化
+            if(document.body.classList.contains('mobile-device')) {
+                optimizeForMobile();
+            }
         });
 
         // ==================== 导航栏功能 ====================
@@ -1343,53 +1527,56 @@
             
             const timelineModal = document.getElementById('timeline-modal');
             const modalImage = document.getElementById('modal-image');
-            const videoModal = document.getElementById('video-modal');
             
-            // 绑定图片查看按钮
-            document.querySelectorAll('.timeline-media-btn[data-type="image"]').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const imageUrl = this.closest('.timeline-item').getAttribute('data-image');
+            timelineItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if(!e.target.closest('.timeline-media-btn') && !e.target.closest('.timeline-video-hint')) {
+                        const imageUrl = this.getAttribute('data-image');
+                        modalImage.src = imageUrl;
+                        timelineModal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            function openVideoModal(videoUrl) {
+                const videoModal = document.getElementById('video-modal');
+                const videoFrame = document.getElementById('video-frame');
+                
+                videoFrame.src = videoUrl;
+                videoModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                
+                if(isMusicPlaying) {
+                    document.getElementById('bg-music').pause();
+                    document.getElementById('music-control').classList.add('paused');
+                    isMusicPlaying = false;
+                }
+            }
+            
+            function openModal(type, element) {
+                const timelineItem = element.closest('.timeline-item');
+                
+                if(type === 'image') {
+                    const imageUrl = timelineItem.getAttribute('data-image');
                     modalImage.src = imageUrl;
                     timelineModal.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-            
-            // 绑定视频查看按钮
-            document.querySelectorAll('.timeline-media-btn[data-type="video"]').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const videoUrl = this.closest('.timeline-item').getAttribute('data-video');
-                    document.getElementById('video-frame').src = videoUrl;
-                    videoModal.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-            
-            // 关闭按钮
-            document.querySelector('.close-modal').addEventListener('click', function() {
-                timelineModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-            
-            document.querySelector('.close-video').addEventListener('click', function() {
-                document.getElementById('video-frame').src = '';
-                videoModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
-            
-            // 点击模态框外部关闭
-            timelineModal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.style.display = 'none';
-                    document.body.style.overflow = 'auto';
+                } else if(type === 'video') {
+                    const videoUrl = timelineItem.getAttribute('data-video');
+                    openVideoModal(videoUrl);
                 }
+                
+                document.body.style.overflow = 'hidden';
+            }
+            
+            document.querySelectorAll('[onclick^="openModal"]').forEach(btn => {
+                const type = btn.getAttribute('onclick').match(/'([^']+)'/)[1];
+                btn.onclick = function() { openModal(type, this); };
             });
             
-            videoModal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    document.getElementById('video-frame').src = '';
-                    this.style.display = 'none';
-                    document.body.style.overflow = 'auto';
+            document.getElementById('video-modal').addEventListener('click', function(e) {
+                if(e.target === this) {
+                    closeVideoModal();
                 }
             });
             
@@ -1427,7 +1614,6 @@
                 });
             });
             
-            // 双击放大图片
             document.querySelectorAll('.gallery-section-item').forEach(item => {
                 item.addEventListener('dblclick', function() {
                     const img = this.querySelector('img');
@@ -1452,10 +1638,6 @@
             const bgMusic = document.getElementById('bg-music');
             const musicControl = document.getElementById('music-control');
             
-            // 确保音乐文件路径正确
-            bgMusic.src = "music/memories.mp3";
-            bgMusic.load();
-            
             musicControl.addEventListener('click', function() {
                 if(isMusicPlaying) {
                     bgMusic.pause();
@@ -1468,7 +1650,7 @@
                         isMusicPlaying = true;
                     }).catch(error => {
                         console.log('播放失败:', error);
-                        alert('音乐播放失败，请点击页面任意位置后重试');
+                        alert('音乐播放失败，请点击音乐按钮重试');
                     });
                 }
                 isMusicPlaying = !isMusicPlaying;
@@ -1507,74 +1689,257 @@
                     alert('请填写完整信息！');
                 }
             });
+            
+            document.getElementById('toggle-edit-mode').addEventListener('click', function() {
+                editMode = !editMode;
+                document.querySelectorAll('.testimonial-card').forEach(card => {
+                    if(!card.dataset.permanent) {
+                        card.classList.toggle('editable', editMode);
+                    }
+                });
+                this.innerHTML = editMode ? 
+                    '<i class="fas fa-times"></i> 退出编辑模式' : 
+                    '<i class="fas fa-edit"></i> 切换编辑模式';
+            });
         }
 
         // ==================== 留言数据管理 ====================
         async function loadTestimonials() {
             try {
-                // 从Supabase加载留言
-                const { data: savedWishes, error } = await supabase
-                    .from('message')
-                    .select('*')
-                    .order('created_at', { ascending: false });
+                // 首先渲染初始留言
+                renderWishes(INITIAL_WISHES);
                 
-                if (error) {
-                    console.error('从Supabase加载留言失败:', error);
-                    return;
+                // 尝试从JSON加载其他留言
+                try {
+                    const response = await fetch('data.json');
+                    const savedWishes = await response.json();
+                    
+                    // 过滤掉可能重复的初始留言
+                    const additionalWishes = savedWishes.filter(saved => 
+                        !INITIAL_WISHES.some(initial => initial.id === saved.id)
+                    );
+                    
+                    // 添加其他留言
+                    if (additionalWishes.length > 0) {
+                        renderWishes([...INITIAL_WISHES, ...additionalWishes]);
+                    }
+                } catch (error) {
+                    console.error('加载其他留言失败，仅显示初始留言:', error);
                 }
-                
-                renderWishes(savedWishes);
             } catch (error) {
-                console.error('加载留言失败:', error);
+                console.error('初始化留言失败:', error);
+            }
+        }
+
+        async function saveWishes(wishes) {
+            try {
+                // 不保存初始留言
+                const saveData = wishes.filter(wish => !wish.permanent);
+                
+                const response = await fetch('php/save_data.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(saveData)
+                });
+                return await response.json();
+            } catch (error) {
+                console.error('保存留言失败:', error);
+                return { success: false };
             }
         }
 
         async function addWish(name, message) {
-            try {
-                // 插入到Supabase
-                const { data, error } = await supabase
-                    .from('message')
-                    .insert([
-                        { 
-                            name: name,
-                            message: message
-                        }
-                    ])
-                    .select();
-                
-                if (error) {
-                    throw error;
+            const allWishes = [...INITIAL_WISHES];
+            document.querySelectorAll('.testimonial-card').forEach(card => {
+                if(!card.dataset.permanent) {
+                    allWishes.push({
+                        id: parseInt(card.dataset.id),
+                        name: card.querySelector('.testimonial-author h4').textContent.replace('- ', '').trim(),
+                        message: card.querySelector('.testimonial-content').textContent.trim(),
+                        timestamp: new Date(card.querySelector('.wish-date').textContent).getTime() || Date.now()
+                    });
                 }
-                
-                // 重新加载留言
-                await loadTestimonials();
-            } catch (error) {
-                console.error('添加留言失败:', error);
-                alert('提交留言失败，请稍后再试');
+            });
+            
+            const newId = allWishes.length > 0 ? 
+                Math.max(...allWishes.map(w => w.id)) + 1 : 1;
+            
+            const newWish = {
+                id: newId,
+                name,
+                message,
+                timestamp: Date.now()
+            };
+            
+            await saveWishes([...allWishes, newWish]);
+            renderWishes([...INITIAL_WISHES, ...allWishes, newWish]);
+        }
+
+        async function deleteWish(id) {
+            if(document.querySelector(`[data-id="${id}"][data-permanent]`)) {
+                alert('初始留言不可删除！');
+                return;
             }
+            
+            if (!confirm('确定要删除这条留言吗？')) return;
+            
+            const allWishes = [...INITIAL_WISHES];
+            document.querySelectorAll('.testimonial-card').forEach(card => {
+                if(!card.dataset.permanent && parseInt(card.dataset.id) !== id) {
+                    allWishes.push({
+                        id: parseInt(card.dataset.id),
+                        name: card.querySelector('.testimonial-author h4').textContent.replace('- ', '').trim(),
+                        message: card.querySelector('.testimonial-content').textContent.trim(),
+                        timestamp: new Date(card.querySelector('.wish-date').textContent).getTime() || Date.now()
+                    });
+                }
+            });
+            
+            await saveWishes(allWishes.filter(w => !w.permanent));
+            renderWishes(allWishes);
+        }
+
+        async function editWish(id) {
+            const card = document.querySelector(`[data-id="${id}"]`);
+            if(!card) return;
+            
+            if(card.dataset.permanent) {
+                alert('初始留言不可编辑！');
+                return;
+            }
+            
+            const currentName = document.getElementById('name').value.trim();
+            const cardName = card.querySelector('.testimonial-author h4').textContent.replace('- ', '').trim();
+            
+            if (!isAdmin && currentName !== cardName) {
+                alert('您只能编辑自己的留言！');
+                return;
+            }
+            
+            const newName = prompt('编辑名字:', cardName);
+            if (newName === null) return;
+            
+            const newMessage = prompt('编辑留言内容:', card.querySelector('.testimonial-content').textContent.trim());
+            if (newMessage === null) return;
+            
+            const allWishes = [...INITIAL_WISHES];
+            document.querySelectorAll('.testimonial-card').forEach(c => {
+                if(!c.dataset.permanent) {
+                    const wishId = parseInt(c.dataset.id);
+                    allWishes.push({
+                        id: wishId,
+                        name: wishId === id ? newName.trim() : 
+                            c.querySelector('.testimonial-author h4').textContent.replace('- ', '').trim(),
+                        message: wishId === id ? newMessage.trim() : 
+                            c.querySelector('.testimonial-content').textContent.trim(),
+                        timestamp: wishId === id ? Date.now() : 
+                            new Date(c.querySelector('.wish-date').textContent).getTime() || Date.now()
+                    });
+                }
+            });
+            
+            await saveWishes(allWishes.filter(w => !w.permanent));
+            renderWishes(allWishes);
         }
 
         function renderWishes(wishes) {
             const container = document.getElementById('testimonial-container');
-            container.innerHTML = '';
             
-            if (!wishes || wishes.length === 0) {
-                container.innerHTML = '<p class="glass" style="padding: 20px; text-align: center;">暂无留言，快来留下你的祝福吧！</p>';
-                return;
-            }
+            // 保留初始留言
+            const permanentCards = Array.from(document.querySelectorAll('[data-permanent]'));
             
+            // 清除非永久留言
+            document.querySelectorAll('.testimonial-card:not([data-permanent])').forEach(el => el.remove());
+            
+            // 添加新留言（跳过初始留言）
             wishes.forEach(wish => {
-                const card = document.createElement('div');
-                card.className = 'testimonial-card glass visible';
-                card.innerHTML = `
-                    <div class="testimonial-content">${wish.message}</div>
-                    <div class="testimonial-author">
-                        <h4>- ${wish.name}</h4>
-                    </div>
-                    <div class="wish-date">${new Date(wish.created_at).toLocaleString()}</div>
-                `;
-                container.appendChild(card);
+                if (!wish.permanent || !document.querySelector(`[data-id="${wish.id}"]`)) {
+                    const card = document.createElement('div');
+                    card.className = 'testimonial-card glass';
+                    card.dataset.id = wish.id;
+                    
+                    const currentName = document.getElementById('name').value.trim();
+                    const isEditable = isAdmin || (wish.name === currentName);
+                    
+                    if (editMode && isEditable) {
+                        card.classList.add('editable');
+                    }
+                    
+                    card.innerHTML = `
+                        ${(isAdmin || isEditable) ? `
+                        <button class="edit-wish" data-id="${wish.id}" title="编辑留言">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
+                        <button class="delete-wish" data-id="${wish.id}" title="删除留言">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                        ` : ''}
+                        <div class="testimonial-content">${wish.message}</div>
+                        <div class="testimonial-author">
+                            <h4>- ${wish.name}</h4>
+                        </div>
+                        <div class="wish-date">${new Date(wish.timestamp).toLocaleString()}</div>
+                    `;
+                    
+                    if (!wish.permanent) {
+                        container.appendChild(card);
+                    }
+                    
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, 100);
+                }
             });
+            
+            // 添加事件监听
+            document.querySelectorAll('.delete-wish').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    deleteWish(parseInt(this.getAttribute('data-id')));
+                });
+            });
+            
+            document.querySelectorAll('.edit-wish').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    editWish(parseInt(this.getAttribute('data-id')));
+                });
+            });
+        }
+
+        // ==================== 移动端优化 ====================
+        function optimizeForMobile() {
+            // 增大所有可点击元素的触摸区域
+            document.querySelectorAll('a, button, .gallery-tab, .timeline-media-btn').forEach(el => {
+                el.style.touchAction = 'manipulation';
+                el.style.minHeight = '44px';
+                el.style.minWidth = '44px';
+            });
+            
+            // 防止双击缩放
+            let lastTouchTime = 0;
+            document.addEventListener('touchend', function(event) {
+                const now = Date.now();
+                if (now - lastTouchTime <= 300) event.preventDefault();
+                lastTouchTime = now;
+            }, { passive: false });
+            
+            // 优化滚动性能
+            document.documentElement.style.overflowScrolling = 'touch';
+            document.documentElement.style.webkitOverflowScrolling = 'touch';
+        }
+
+        // ==================== 通用功能 ====================
+        function closeModal() {
+            document.getElementById('timeline-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function closeVideoModal() {
+            const videoModal = document.getElementById('video-modal');
+            document.getElementById('video-frame').src = '';
+            videoModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
     </script>
 </body>
